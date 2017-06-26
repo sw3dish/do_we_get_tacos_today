@@ -1,6 +1,14 @@
+## Shh... secrets
+.env
+
 ## Environment normalization:
 /.bundle/
 /vendor/bundle
 /lib/bundler/man/
 
+## renv
 .ruby-version
+
+## Sass
+.sass-cache/
+*.css.map
