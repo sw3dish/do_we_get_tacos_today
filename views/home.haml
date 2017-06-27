@@ -1,7 +1,8 @@
-%div.row-wrapper
-  %div.outer-container
-    %h1
-      - if did_win
-        ="Yes"
-      - else
-        ="No"
+%div.container
+  %section.question
+    %h2.rockies Do we get tacos today?
+  %section.answer
+    - if did_score_seven_runs
+      %h2 Yes!
+    - else
+      %h2 No.

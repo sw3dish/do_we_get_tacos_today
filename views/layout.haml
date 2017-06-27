@@ -2,22 +2,9 @@
 %html
   %head
     %title Do We Get Tacos Today?
-    %link{rel: 'stylesheet', type: 'text/css', href: 'stylesheets/style.css'}
+    %link{rel: 'stylesheet', type: 'text/css', href: 'css/normalize.css'}
+    %link{rel: 'stylesheet', type: 'text/css', href: 'css/skeleton.css'}
+    %link{rel: 'stylesheet', type: 'text/css', href: 'css/custom.css'}
+    %link{rel: 'stylesheet', type: 'text/css', href: '//fonts.googleapis.com/css?family=Raleway:400,300,600'}
   %body
-    %div.default-neat-grid
-      =yield
-    %footer.footer-2
-      %div.footer-logo
-        %img{src: "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_square.png", alt: "Logo image"}
-      %ul
-        %li
-          %a{href: "/"} Home
-        %li
-          %a{href: ""} Contact
-
-      %div.footer-secondary-links
-        %ul
-          %li
-            %a{href: "https://github.com/sw3dish/dowegettacos.today"} Github
-          %li
-            %a{href: "https://github.com/sw3dish/dowegettacos.today"} Colophon
+    =yield
