@@ -1,3 +1,5 @@
+# ======================= Helpers =============================================
+
 def get_scoreboard(date=nil, teams=[])
   url = "https://www.mysportsfeeds.com"
   options = {}
@@ -16,31 +18,41 @@ def get_scoreboard(date=nil, teams=[])
 
   resp = conn.get(route, options)
 
-  resp.body
+  if resp.status == 200
+    return JSON.parse(resp.body)
+  else
+    return false
+  end
 end
 
-def did_win?(scoreboard, team)
-  did_win = false
+def did_score_seven_runs?(scoreboard, team)
+  did_score_seven_runs = false
   scoreboard["scoreboard"]["gameScore"].each do |game|
     if game["game"]["awayTeam"]["Abbreviation"] == team
-      if game["awayScore"] > game["homeScore"]
-        did_win = true
+      if game["awayScore"].to_i >= 7
+        did_score_seven_runs = true
       end
-    else
-      if game["homeScore"] > game["awayScore"]
-        did_win = true
+    elsif game["game"]["homeTeam"]["Abbreviation"] == team
+      if game["homeScore"].to_i >= 7
+        did_score_seven_runs = true
       end
     end
   end
-  return did_win
+  return did_score_seven_runs
 end
+
+# ======================= Routes ==============================================
 
 get '/' do
-  date = Date.new(2017,6,23)
-  scoreboard = JSON.parse(get_scoreboard(date, ['COL']))
+  date = Date::today.prev_day
+  scoreboard = get_scoreboard(date, ['COL'])
 
-  haml :home, :locals => {:did_win=>did_win?(scoreboard, "COL")}
+  haml :home, :locals => {
+    :did_score_seven_runs=>did_score_seven_runs?(scoreboard, "COL")
+  }
 end
+
+# ======================= API Routes ==========================================
 
 namespace '/api' do
 
@@ -49,8 +61,8 @@ namespace '/api' do
   end
 
   get '/rockies' do
-    date = Date.new(2017,6,23)
-    scoreboard = JSON.parse(get_scoreboard(date, ['COL']))
-    did_win?(scoreboard, "COL").to_json
+    date = Date::today.prev_day
+    scoreboard = get_scoreboard(date, ['COL'])
+    did_score_seven_runs?(scoreboard, "COL").to_json
   end
 end
