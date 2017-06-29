@@ -4,7 +4,7 @@ source "https://rubygems.org"
 gem 'thin'
 
 gem 'sinatra'
-gem 'sinatra-contrib', :require => 'sinatra/namespace'
+gem 'sinatra-contrib', :require => ['sinatra/namespace', 'sinatra/json']
 
 # API
 gem 'faraday'

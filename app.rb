@@ -55,14 +55,9 @@ end
 # ======================= API Routes ==========================================
 
 namespace '/api' do
-
-  before do
-    content_type 'application/json'
-  end
-
-  get '/rockies' do
+  get '/rockies.json' do
     date = Date::today.prev_day
     scoreboard = get_scoreboard(date, ['COL'])
-    did_score_seven_runs?(scoreboard, "COL").to_json
+    json :did_score_seven_runs => did_score_seven_runs?(scoreboard, "COL")
   end
 end
