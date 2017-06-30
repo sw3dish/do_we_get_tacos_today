@@ -27,14 +27,16 @@ end
 
 def did_score_seven_runs?(scoreboard, team)
   did_score_seven_runs = false
-  scoreboard["scoreboard"]["gameScore"].each do |game|
-    if game["game"]["awayTeam"]["Abbreviation"] == team
-      if game["awayScore"].to_i >= 7
-        did_score_seven_runs = true
-      end
-    elsif game["game"]["homeTeam"]["Abbreviation"] == team
-      if game["homeScore"].to_i >= 7
-        did_score_seven_runs = true
+  if scoreboard
+    scoreboard["scoreboard"]["gameScore"].each do |game|
+      if game["game"]["awayTeam"]["Abbreviation"] == team
+        if game["awayScore"].to_i >= 7
+          did_score_seven_runs = true
+        end
+      elsif game["game"]["homeTeam"]["Abbreviation"] == team
+        if game["homeScore"].to_i >= 7
+          did_score_seven_runs = true
+        end
       end
     end
   end
