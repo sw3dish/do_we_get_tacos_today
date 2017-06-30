@@ -1,3 +1,18 @@
+/* ------------ Custom ------------  */
+.separator {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 50%;
+}
+
+a {
+  color: #000000;
+}
+
+a:hover {
+  color: #4f007d;
+}
+/* ------------- Home -------------  */
 .question {
   text-align: center;
   margin-top: 16rem;
@@ -8,6 +23,58 @@
   margin-top: 4rem;
 }
 
+/* ------------- About ------------  */
+.about {
+  text-align: center;
+  margin-top: 18rem;
+}
+
+.colophon {
+  text-align: center;
+  margin-top: 4rem;
+}
+
+/* -------------- 404 -------------  */
+.not-found {
+  text-align: center;
+  margin-top: 16rem;
+}
+
 .rockies {
+  color: #4f007d;
+}
+
+/* ------------ Footer ------------  */
+footer {
+  position: absolute;
+  display: block;
+  bottom: 0;
+  height: 12rem;
+  width: 100%;
+  text-align: center;
+}
+
+.navbar-list {
+  list-style: none;
+  margin-bottom: 0;
+}
+
+.navbar-item {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 0;
+}
+
+.navbar-link {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+  text-decoration: none;
+  line-height: 3rem;
+  color: #000000;
+}
+
+.navbar-link:hover {
   color: #4f007d;
 }

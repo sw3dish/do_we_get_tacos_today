@@ -8,3 +8,13 @@
     %link{rel: 'stylesheet', type: 'text/css', href: '//fonts.googleapis.com/css?family=Raleway:400,300,600'}
   %body
     =yield
+    %footer
+      %hr.separator
+      %section.navbar
+        %ul.navbar-list
+          %li.navbar-item
+            %a.navbar-link{href: "/"} Home
+          %li.navbar-item
+            %a.navbar-link{href: "/about"} About
+      %section.copyright
+        %p.copyright-text Copyright © 2017 Colin Burr

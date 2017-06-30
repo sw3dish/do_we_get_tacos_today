@@ -49,9 +49,23 @@ get '/' do
   date = Date::today.prev_day
   scoreboard = get_scoreboard(date, ['COL'])
 
+  if did_score_seven_runs?(scoreboard, "COL")
+    answer = "Yes!"
+  else
+    answer = "No."
+  end
+
   haml :home, :locals => {
-    :did_score_seven_runs=>did_score_seven_runs?(scoreboard, "COL")
+    :answer => answer
   }
+end
+
+get '/about' do
+  haml :about
+end
+
+not_found do
+  haml :not_found
 end
 
 # ======================= API Routes ==========================================
