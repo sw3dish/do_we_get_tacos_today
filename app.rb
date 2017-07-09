@@ -27,6 +27,7 @@ end
 
 def did_score_seven_runs?(scoreboard, team)
   did_score_seven_runs = false
+  # if the scoreboard is false, then there was an error with the external api
   if scoreboard
     scoreboard["scoreboard"]["gameScore"].each do |game|
       if game["game"]["awayTeam"]["Abbreviation"] == team
@@ -48,11 +49,15 @@ end
 get '/' do
   date = Date::today.prev_day
   scoreboard = get_scoreboard(date, ['COL'])
-
-  if did_score_seven_runs?(scoreboard, "COL")
-    answer = "Yes!"
+  # if the scoreboard is false, then there was an error with the external api
+  if scoreboard
+    if did_score_seven_runs?(scoreboard, "COL")
+      answer = "Yes!"
+    else
+      answer = "No."
+    end
   else
-    answer = "No."
+    answer = "I don't know."
   end
 
   haml :home, :locals => {
